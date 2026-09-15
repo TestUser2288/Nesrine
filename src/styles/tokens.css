@@ -1,0 +1,209 @@
+/* ============================================================
+   Jetons de design — thème violet, clair et sombre
+   Le thème clair est la définition de base ; le sombre est
+   redéfini deux fois : media query (réglage système) et
+   [data-theme] (bascule manuelle, qui doit gagner dans les
+   deux sens).
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Surfaces ---------- */
+  --bg: #ffffff;
+  --bg-subtle: #f7f6fc;
+  --surface: #ffffff;
+  --surface-2: #f4f2fb;
+  --surface-sunken: #eeebf8;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+
+  /* ---------- Encre ---------- */
+  --ink: #14121f;
+  --ink-2: #5b5870;
+  --ink-3: #8a87a0;
+  --ink-on-brand: #ffffff;
+
+  /* ---------- Traits ---------- */
+  --line: #e9e7f2;
+  --line-strong: #d9d5ea;
+
+  /* ---------- Marque ---------- */
+  --brand: #7c3aed;
+  --brand-strong: #6d28d9;
+  --brand-ink: #5b21b6;
+  --brand-soft: #f1ebfe;
+  --brand-soft-2: #e5dbfd;
+  --brand-glow: rgba(124, 58, 237, 0.32);
+
+  /* Accent secondaire — ruban, surlignages, état "dispo" */
+  --magenta: #db2777;
+  --magenta-soft: #fde7f1;
+  --amber: #b45309;
+  --amber-soft: #fdf0dc;
+
+  /* ---------- Séries de données (validées CVD, toutes paires) ---------- */
+  --series-1: #4a3aa7;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-1-soft: #ebe8f7;
+  --series-2-soft: #fdeee7;
+  --series-3-soft: #e6f7f0;
+
+  --chart-surface: #ffffff;
+  --chart-grid: #ebe9f3;
+
+  /* ---------- Typographie ---------- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+
+  /* ---------- Espacement ---------- */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-80: 80px;
+  --sp-96: 96px;
+
+  /* ---------- Mise en page ---------- */
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --section-gap: clamp(72px, 9vw, 128px);
+  --nav-h: 76px;
+
+  /* ---------- Rayons ---------- */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-full: 9999px;
+
+  /* ---------- Ombres ---------- */
+  --shadow-xs: 0 1px 2px rgba(20, 18, 31, 0.06);
+  --shadow-sm: 0 2px 8px rgba(20, 18, 31, 0.06), 0 1px 2px rgba(20, 18, 31, 0.04);
+  --shadow-md: 0 10px 30px rgba(20, 18, 31, 0.08), 0 2px 6px rgba(20, 18, 31, 0.04);
+  --shadow-lg: 0 24px 60px rgba(20, 18, 31, 0.12), 0 4px 12px rgba(20, 18, 31, 0.05);
+  --shadow-brand: 0 10px 28px rgba(124, 58, 237, 0.3);
+
+  /* ---------- Mouvement ---------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 0.18s;
+  --t-base: 0.3s;
+  --t-slow: 0.6s;
+
+  /* ---------- Plans ---------- */
+  --z-nav: 60;
+  --z-overlay: 80;
+  --z-cursor: 120;
+}
+
+/* Le thème sombre est choisi, pas dérivé : chaque valeur est posée. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --bg: #0e0d14;
+    --bg-subtle: #121019;
+    --surface: #17161f;
+    --surface-2: #1c1a26;
+    --surface-sunken: #23212f;
+    --surface-glass: rgba(23, 22, 31, 0.72);
+
+    --ink: #f5f4f9;
+    --ink-2: #b6b3c8;
+    --ink-3: #8a86a3;
+    --ink-on-brand: #ffffff;
+
+    --line: #262433;
+    --line-strong: #363348;
+
+    --brand: #a78bfa;
+    --brand-strong: #8b5cf6;
+    --brand-ink: #c4b5fd;
+    --brand-soft: #211c38;
+    --brand-soft-2: #2b2450;
+    --brand-glow: rgba(167, 139, 250, 0.3);
+
+    --magenta: #f472b6;
+    --magenta-soft: #33172a;
+    --amber: #fbbf24;
+    --amber-soft: #332612;
+
+    --series-1: #9085e9;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-1-soft: #241f3d;
+    --series-2-soft: #33190e;
+    --series-3-soft: #0d2a20;
+
+    --chart-surface: #17161f;
+    --chart-grid: #2a2838;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+    --shadow-brand: 0 10px 28px rgba(124, 58, 237, 0.45);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0e0d14;
+  --bg-subtle: #121019;
+  --surface: #17161f;
+  --surface-2: #1c1a26;
+  --surface-sunken: #23212f;
+  --surface-glass: rgba(23, 22, 31, 0.72);
+
+  --ink: #f5f4f9;
+  --ink-2: #b6b3c8;
+  --ink-3: #8a86a3;
+  --ink-on-brand: #ffffff;
+
+  --line: #262433;
+  --line-strong: #363348;
+
+  --brand: #a78bfa;
+  --brand-strong: #8b5cf6;
+  --brand-ink: #c4b5fd;
+  --brand-soft: #211c38;
+  --brand-soft-2: #2b2450;
+  --brand-glow: rgba(167, 139, 250, 0.3);
+
+  --magenta: #f472b6;
+  --magenta-soft: #33172a;
+  --amber: #fbbf24;
+  --amber-soft: #332612;
+
+  --series-1: #9085e9;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-1-soft: #241f3d;
+  --series-2-soft: #33190e;
+  --series-3-soft: #0d2a20;
+
+  --chart-surface: #17161f;
+  --chart-grid: #2a2838;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-brand: 0 10px 28px rgba(124, 58, 237, 0.45);
+}
