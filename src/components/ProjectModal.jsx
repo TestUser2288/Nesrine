@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLockBody } from '../hooks/useInteractions';
 import ProjectVisual from './ProjectVisual';
-import { Check, Close } from './icons';
+import { ArrowUpRight, Check, Close, Github } from './icons';
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -70,7 +70,11 @@ export default function ProjectModal({ project, onClose }) {
             '--visual': `linear-gradient(140deg, color-mix(in srgb, ${project.tone} 16%, var(--surface)) 0%, var(--surface) 78%)`,
           }}
         >
-          <ProjectVisual project={project} />
+          {project.image ? (
+            <img className="modal__img" src={project.image} alt="" />
+          ) : (
+            <ProjectVisual project={project} />
+          )}
           <button type="button" className="modal__close" onClick={onClose} aria-label="Fermer">
             <Close width="18" height="18" />
           </button>
@@ -114,6 +118,20 @@ export default function ProjectModal({ project, onClose }) {
             ))}
           </div>
 
+          {project.gallery ? (
+            <div>
+              <p className="modal__section-label">Extraits du rapport</p>
+              <div className="modal__gallery">
+                {project.gallery.map((figure) => (
+                  <figure className="figure" key={figure.src}>
+                    <img src={figure.src} alt={figure.caption} loading="lazy" />
+                    <figcaption>{figure.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
           <div>
             <p className="modal__section-label">Stack technique</p>
             <ul className="panel__stack">
@@ -124,6 +142,24 @@ export default function ProjectModal({ project, onClose }) {
               ))}
             </ul>
           </div>
+
+          {project.links ? (
+            <div className="modal__links">
+              {project.links.map((link) => (
+                <a
+                  className="btn btn--outline btn--sm"
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Github width="16" height="16" />
+                  {link.label}
+                  <ArrowUpRight width="14" height="14" />
+                </a>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

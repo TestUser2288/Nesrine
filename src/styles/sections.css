@@ -528,6 +528,18 @@
   border-bottom: 1px solid var(--line);
 }
 
+/* Figure réelle issue du projet : on la pose entière sur une plaque claire
+   plutôt que de la rogner — un graphique rogné perd ses axes. */
+.project__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+  padding: var(--sp-12);
+}
+
 .project__tag {
   position: absolute;
   top: var(--sp-16);

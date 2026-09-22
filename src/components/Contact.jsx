@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { contact, profile } from '../data/content';
-import { useMagnetic } from '../hooks/useInteractions';
 import Reveal from './Reveal';
 import SectionHeading from './SectionHeading';
 import { useToast } from './Toasts';
-import { Check, Copy, Linkedin, Mail, MapPin, Phone, Send } from './icons';
+import { Check, Copy, Github, Linkedin, Mail, MapPin, Phone, Send } from './icons';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -17,6 +16,13 @@ const channels = [
     value: 'Nesrine Boussenna',
     icon: Linkedin,
     href: profile.linkedin,
+  },
+  {
+    id: 'github',
+    label: 'GitHub',
+    value: 'nesrineboussenna0-coder',
+    icon: Github,
+    href: profile.github,
   },
   { id: 'location', label: 'Localisation', value: profile.location, icon: MapPin },
 ];
@@ -38,7 +44,6 @@ function ContactForm() {
   const [touched, setTouched] = useState({});
   const [sent, setSent] = useState(false);
   const toast = useToast();
-  const submitRef = useMagnetic(0.25);
 
   const update = (field) => (event) => {
     const next = { ...values, [field]: event.target.value };
@@ -131,7 +136,7 @@ function ContactForm() {
       </div>
 
       <div className="form__row" style={{ alignItems: 'center' }}>
-        <button type="submit" className="btn btn--brand" ref={submitRef}>
+        <button type="submit" className="btn btn--brand">
           <Send width="17" height="17" />
           Envoyer le message
         </button>

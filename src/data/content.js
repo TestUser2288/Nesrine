@@ -12,8 +12,8 @@ export const profile = {
   email: 'nesrineboussenna0@gmail.com',
   phone: '+216 90 130 432',
   phoneHref: '+21690130432',
-  linkedin: 'https://www.linkedin.com/in/nesrine-boussenna',
-  github: 'https://github.com/',
+  linkedin: 'https://www.linkedin.com/in/nesrine-boussenna-587892296/',
+  github: 'https://github.com/nesrineboussenna0-coder',
   cv: '/Nesrine_Boussenna_CV.pdf',
   portrait: '/portrait.jpg',
 };
@@ -45,7 +45,7 @@ export const hero = {
     { value: 8, suffix: '', label: 'Modèles comparés sur le PFE STAR Assurances' },
     { value: 3, suffix: '', label: 'Expériences en entreprise et institution' },
     { value: 5, suffix: ' ans', label: 'De formation scientifique supérieure' },
-    { value: 15, suffix: '+', label: 'Technologies maîtrisées au quotidien' },
+    { value: 6, suffix: '', label: 'Projets de modélisation et de BI livrés' },
   ],
   badges: [
     { value: 'Python · R', label: 'Stack principale', tone: 'var(--series-1)', soft: 'var(--series-1-soft)' },
@@ -166,6 +166,7 @@ export const experience = [
 
 export const projectFilters = [
   { id: 'all', label: 'Tous' },
+  { id: 'bi', label: 'Business Intelligence' },
   { id: 'ml', label: 'Machine Learning' },
   { id: 'risk', label: 'Actuariat & risque' },
   { id: 'app', label: 'Applications' },
@@ -173,14 +174,62 @@ export const projectFilters = [
 
 export const projects = [
   {
+    id: 'portefeuille-auto',
+    title: 'Analyse du portefeuille automobile',
+    context: 'Power BI · Assurance auto · 354 140 années-polices · 2022-2024',
+    tags: ['bi', 'risk'],
+    tagLabel: 'Business Intelligence',
+    tone: 'var(--series-1)',
+    image: '/projects/pbi-headline.webp',
+    summary:
+      "Rapport Power BI de 13 pages sur une extraction d'assurance automobile de 354 140 années-polices : d'où vient la dégradation du ratio S/P, et le prix ordonne-t-il le risque aussi bien qu'un modèle ?",
+    points: [
+      'Modèle en étoile écrit en TMDL : deux tables de faits délibérément non reliées, 23 relations plusieurs-à-un à sens unique, 97 mesures DAX rangées en 12 dossiers.',
+      'Décomposition de la dérive du ratio S/P (65,6 % → 74,7 %, soit +9,0 points) : la tarification en explique environ trois quarts, le coût des sinistres un quart.',
+      'Confrontation du prix à un GLM et à un GBM — Gini de 0,2675 contre 0,2676 pour la prime : le portefeuille ordonne le risque aussi bien que le modèle.',
+      'Aux extrêmes, le modèle a raison : le décile le plus sous-tarifé affiche un S/P de 123,7 % contre 60,8 % à l’autre bout, 63 points d’écart sur 9,5 % de l’exposition.',
+      '25 contrôles de réconciliation auto-évalués en DAX, adossés à des totaux recalculés indépendamment sous pandas.',
+    ],
+    metrics: [
+      { value: '354 140', label: 'Années-polices' },
+      { value: '+9,0 pts', label: 'Dérive du ratio S/P' },
+      { value: '97', label: 'Mesures DAX' },
+    ],
+    gallery: [
+      {
+        src: '/projects/pbi-headline.webp',
+        caption: 'Prime et prime pure par année-exposition : le prix recule, le coût du risque non.',
+      },
+      {
+        src: '/projects/pbi-gini.webp',
+        caption: 'Pouvoir de discrimination : modèle contre prime facturée (Gini, test 2024).',
+      },
+      {
+        src: '/projects/pbi-star.webp',
+        caption: 'Schéma en étoile du modèle sémantique.',
+      },
+    ],
+    stack: [
+      'Power BI',
+      'DAX',
+      'TMDL',
+      'Power Query',
+      'Python',
+      'pandas',
+      'Schéma en étoile',
+      'GLM',
+      'GBM',
+    ],
+  },
+  {
     id: 'rachat',
     title: 'Prédiction du taux de rachat en assurance vie',
     context: 'Projet de fin d’études · STAR Assurances · 2026',
     tags: ['ml', 'risk'],
     tagLabel: 'Assurance vie',
-    tone: 'var(--series-1)',
+    tone: 'var(--series-2)',
     summary:
-      "Pipeline de prédiction du taux annuel de rachat en épargne, construit sur deux voies concurrentes : machine learning pur et analyse de survie actuarielle.",
+      'Pipeline de prédiction du taux annuel de rachat en épargne, construit sur deux voies concurrentes : machine learning pur et analyse de survie actuarielle.',
     points: [
       'Feature engineering combinant variables macroéconomiques et signaux comportementaux des assurés.',
       'Comparaison de 8 modèles sur deux approches, évaluées par des métriques d’erreur sur taux agrégé.',
@@ -194,44 +243,51 @@ export const projects = [
     stack: ['Python', 'scikit-learn', 'scikit-survival', 'Cox', 'XGBoost', 'CatBoost'],
   },
   {
-    id: 'defaut',
-    title: 'Modélisation de la probabilité de défaut',
-    context: 'Projet académique · Risque de crédit',
-    tags: ['ml', 'risk'],
-    tagLabel: 'Risque de crédit',
-    tone: 'var(--series-2)',
-    summary:
-      "Modèle de classification binaire prédisant le défaut de crédit, pensé pour alimenter un système de notation interne.",
-    points: [
-      'Identification des facteurs financiers déterminants du risque de défaut.',
-      "Sélection de variables et normalisation via SelectKBest et MinMaxScaler.",
-      "Évaluation des performances en vue d'une intégration dans un système de notation interne (SNI).",
-    ],
-    metrics: [
-      { value: 'SNI', label: 'Cible d’intégration' },
-      { value: 'Binaire', label: 'Type de classification' },
-    ],
-    stack: ['Python', 'scikit-learn', 'pandas', 'seaborn', 'MinMaxScaler', 'SelectKBest'],
-  },
-  {
-    id: 'tarification',
-    title: 'Tarification automobile via machine learning',
-    context: 'Projet académique · Actuariat non-vie',
+    id: 'smart-risk',
+    title: 'Smart Risk — tarification automobile',
+    context: 'Projet académique · Actuariat non-vie · R Shiny',
     tags: ['ml', 'risk', 'app'],
     tagLabel: 'Actuariat non-vie',
     tone: 'var(--series-3)',
     summary:
-      'Application analytique de tarification automobile fondée sur une prédiction coût-fréquence, combinant modèles statistiques classiques et algorithmes de machine learning.',
+      'Solution analytique complète de tarification automobile : exploration des données, modélisation coût-fréquence et restitution dans un tableau de bord Shiny cartographié.',
     points: [
-      'Modélisation séparée de la fréquence et du coût des sinistres.',
-      'Comparaison entre approches statistiques classiques et algorithmes de machine learning.',
-      'Restitution dans une application Shiny avec cartographie et tableaux interactifs.',
+      'Fréquence modélisée par GLM quasi-Poisson avec offset d’exposition ; coût moyen par GLM Gamma en lien log.',
+      'Prime pure estimée en direct par GLM Tweedie, puis confrontée aux algorithmes d’apprentissage (XGBoost, arbres CART).',
+      'Carte choroplèthe des régions françaises en Leaflet, matrices de corrélation et arbres de décision explorables dans le tableau de bord.',
+      'Application Shiny multi-onglets : données, exploration, modèles et comparaison des tarifs.',
     ],
     metrics: [
-      { value: 'Coût ×', label: 'Approche fréquence' },
-      { value: 'Shiny', label: 'Restitution' },
+      { value: 'Poisson × Gamma', label: 'Coût-fréquence' },
+      { value: 'Tweedie', label: 'Prime pure directe' },
+      { value: 'XGBoost', label: 'Référence ML' },
     ],
-    stack: ['R', 'caret', 'MASS', 'recipes', 'tidyverse', 'sf', 'tmap', 'Shiny'],
+    links: [{ label: 'Code source', href: 'https://github.com/nesrineboussenna0-coder/Smart-Risk-' }],
+    stack: ['R', 'Shiny', 'shinydashboard', 'MASS', 'caret', 'XGBoost', 'sf', 'Leaflet', 'DiagrammeR'],
+  },
+  {
+    id: 'scoring',
+    title: 'Scoring de crédit — probabilité de défaut',
+    context: 'Projet académique · Risque de crédit entreprises',
+    tags: ['ml', 'risk'],
+    tagLabel: 'Risque de crédit',
+    tone: 'var(--series-2)',
+    summary:
+      'Modèle prédictif estimant la probabilité et le délai de défaut d’un portefeuille d’entreprises, et identifiant les principaux déterminants financiers du risque de faillite.',
+    points: [
+      'Analyse discriminante des variables par Weight of Evidence et Information Value, puis sélection par SelectKBest et test du khi-deux.',
+      'Comparaison de trois classifieurs — régression logistique, arbre de décision et forêt aléatoire — tous pondérés pour compenser le déséquilibre des classes.',
+      'Évaluation par matrice de confusion et rapport de classification, en vue d’une intégration dans un système de notation interne (SNI).',
+    ],
+    metrics: [
+      { value: '3', label: 'Classifieurs comparés' },
+      { value: 'WOE / IV', label: 'Sélection des variables' },
+      { value: 'SNI', label: 'Cible d’intégration' },
+    ],
+    links: [
+      { label: 'Code source', href: 'https://github.com/nesrineboussenna0-coder/Scoring-de-credit' },
+    ],
+    stack: ['Python', 'scikit-learn', 'pandas', 'seaborn', 'WOE / IV', 'SelectKBest'],
   },
   {
     id: 'ocr',
@@ -241,25 +297,33 @@ export const projects = [
     tagLabel: 'OCR & automatisation',
     tone: 'var(--series-1)',
     summary:
-      "Application web Django qui lit des bilans comptables en PDF, en extrait les postes via un pipeline multi-OCR et génère des fichiers Excel formatés.",
+      'Application web full-stack qui lit des bilans comptables en PDF, en extrait les postes via un pipeline multi-OCR et génère des fichiers Excel formatés.',
     points: [
-      "Pipeline multi-OCR combinant Doctr, Tesseract et Docling pour fiabiliser la reconnaissance du texte.",
-      'Prétraitement des images et des PDF avec OpenCV et PyPDF2.',
-      "Tableau de bord analytique en temps réel et export automatisé des rapports Excel.",
+      'Pipeline multi-OCR combinant Doctr, Tesseract et Docling pour fiabiliser la reconnaissance du texte.',
+      'Prétraitement des images et des PDF avec OpenCV et PyPDF2 avant passage à la reconnaissance.',
+      'Application Django complète — dépôt du document, traitement, consultation — habillée en TailwindCSS.',
+      'Tableau de bord analytique en temps réel et export automatisé des rapports Excel.',
     ],
     metrics: [
       { value: '3', label: 'Moteurs OCR combinés' },
       { value: 'PDF → XLSX', label: 'Chaîne automatisée' },
+      { value: 'Django', label: 'Application full-stack' },
     ],
-    stack: ['Python', 'Django', 'OpenCV', 'PyPDF2', 'Pandas', 'TailwindCSS'],
+    links: [
+      {
+        label: 'Code source',
+        href: 'https://github.com/nesrineboussenna0-coder/-Automatisation-de-l-extraction-de-bilans-comptables',
+      },
+    ],
+    stack: ['Python', 'Django', 'OpenCV', 'PyPDF2', 'Pandas', 'TailwindCSS', 'SQLite'],
   },
   {
     id: 'shiny-ins',
     title: 'Cartographie statistique interactive de la Tunisie',
     context: 'Stage d’insertion · INS · 2024',
-    tags: ['app'],
+    tags: ['app', 'bi'],
     tagLabel: 'Data visualisation',
-    tone: 'var(--series-2)',
+    tone: 'var(--series-3)',
     summary:
       "Application R Shiny d'exploration des données statistiques nationales, articulée autour d'une carte choroplèthe et de visualisations dynamiques.",
     points: [

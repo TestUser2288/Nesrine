@@ -26,7 +26,18 @@ function ProjectCard({ project, index, onOpen }) {
           '--visual': `linear-gradient(140deg, color-mix(in srgb, ${project.tone} 14%, var(--surface)) 0%, var(--surface) 76%)`,
         }}
       >
-        <ProjectVisual project={project} variant={index % 3} />
+        {project.image ? (
+          <img
+            className="project__img"
+            src={project.image}
+            alt=""
+            loading="lazy"
+            width="1400"
+            height="628"
+          />
+        ) : (
+          <ProjectVisual project={project} variant={index % 3} />
+        )}
         <span className="pill project__tag">{project.tagLabel}</span>
         <span className="project__zoom">
           <Maximize width="16" height="16" />
@@ -87,7 +98,7 @@ export default function Projects() {
           lead="Des modèles pensés pour la"
           accent="production"
           tail="."
-          lede="Cinq projets de modélisation et d'ingénierie de données, du risque de crédit à l'extraction documentaire. Cliquez sur une carte pour le détail."
+          lede="Six projets de modélisation, de décisionnel et d'ingénierie de données, du portefeuille d'assurance au risque de crédit. Cliquez sur une carte pour le détail."
         />
 
         <Reveal>

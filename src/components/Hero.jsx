@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { hero, profile } from '../data/content';
 import { portraitLqip } from '../data/lqip';
-import { useCountUp, useMagnetic, useTilt } from '../hooks/useInteractions';
+import { useCountUp, useTilt } from '../hooks/useInteractions';
 import { useReveal } from '../hooks/useReveal';
 import Reveal from './Reveal';
 import { ArrowRight, Download, Github, Linkedin, Mail, Sparkle } from './icons';
@@ -72,8 +72,6 @@ function Portrait() {
 }
 
 export default function Hero() {
-  const primaryRef = useMagnetic(0.3);
-  const secondaryRef = useMagnetic(0.25);
   const aura1 = useRef(null);
   const aura2 = useRef(null);
   const { ref: statsRef, isVisible: statsVisible } = useReveal({ threshold: 0.3 });
@@ -145,11 +143,11 @@ export default function Hero() {
             </p>
 
             <div className="hero__actions">
-              <a className="btn btn--brand btn--lg" href="#contact" ref={primaryRef}>
+              <a className="btn btn--brand btn--lg" href="#contact">
                 <Mail width="17" height="17" />
                 Me contacter
               </a>
-              <a className="btn btn--outline btn--lg" href={profile.cv} download ref={secondaryRef}>
+              <a className="btn btn--outline btn--lg" href={profile.cv} download>
                 <Download width="17" height="17" />
                 Mon CV
               </a>

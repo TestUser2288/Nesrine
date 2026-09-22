@@ -24,7 +24,7 @@ sont écrites à la main (pas de framer-motion, pas de GSAP, pas de Tailwind).
 | Hero | Titre animé ligne par ligne, portrait incliné en 3D, pastilles flottantes, bandeau de 4 chiffres à compteurs animés |
 | Profil | Récit + trois axes de travail en cartes à projecteur |
 | Expérience | Onglets verticaux accessibles (STAR, WEVIOO, INS) avec indicateur glissant |
-| Projets | 5 projets, filtres animés en FLIP, fiche détaillée en fenêtre modale |
+| Projets | 6 projets, filtres animés en FLIP, fiche détaillée en fenêtre modale avec galerie de figures et lien vers le dépôt |
 | Compétences | 3 graphiques à barres de maîtrise |
 | Parcours | Frise de jalons + radar de domaines + diplômes |
 | Contact | Formulaire validé côté client + coordonnées copiables |
@@ -39,7 +39,6 @@ sont écrites à la main (pas de framer-motion, pas de GSAP, pas de Tailwind).
   un script inline pour éviter le flash clair au chargement.
 - **Curseur maison** — point collé au pointeur + anneau amorti, agrandi sur les
   éléments interactifs. Désactivé au doigt et en `prefers-reduced-motion`.
-- **Magnétisme** — les boutons principaux suivent légèrement le curseur.
 - **FLIP** — au changement de filtre, les cartes glissent de leur ancienne
   position vers la nouvelle (mesure avant rendu, animation de l'écart).
 - **Progression de lecture** — barre en haut et anneau autour du bouton
@@ -68,11 +67,26 @@ src/
     useReveal.js           apparition au défilement
     useScrollState.js      scroll, section active, progression
     useTheme.js            thème persistant
-    useInteractions.js     magnétisme, tilt, projecteur, compteur, FLIP, verrou
+    useInteractions.js     tilt, projecteur, compteur, FLIP, verrou de défilement
   components/
     charts/                ProficiencyChart · DomainRadar · Stepper
     *.jsx                  une section ou une couche par fichier
 ```
+
+## Projets présentés
+
+| Projet | Source | Lien |
+|--------|--------|------|
+| Analyse du portefeuille automobile | Projet Power BI local (`PowerBI/First project`) | figures réelles dans `public/projects/` |
+| Prédiction du taux de rachat | PFE STAR Assurances | — |
+| Smart Risk — tarification automobile | Dépôt `Smart-Risk-` | GitHub |
+| Scoring de crédit | Dépôt `Scoring-de-credit` | GitHub |
+| Extraction de bilans comptables | Dépôt `-Automatisation-de-l-extraction-de-bilans-comptables` | GitHub |
+| Cartographie statistique de la Tunisie | Stage INS | — |
+
+Les trois figures du projet Power BI (`pbi-headline`, `pbi-gini`, `pbi-star`)
+proviennent de `01_Documentation/report_assets/` du projet source, aplaties sur
+blanc et converties en WebP.
 
 ## Modifier le contenu
 

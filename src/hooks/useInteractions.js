@@ -5,52 +5,6 @@ const finePointer = () =>
   window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/**
- * Attraction magnétique : l'élément suit le curseur dans un rayon donné,
- * puis revient à sa place. Désactivé au doigt et en mouvement réduit.
- */
-export function useMagnetic(strength = 0.35, radius = 90) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node || !finePointer()) return undefined;
-
-    let frame = 0;
-
-    const onMove = (event) => {
-      const rect = node.getBoundingClientRect();
-      const dx = event.clientX - (rect.left + rect.width / 2);
-      const dy = event.clientY - (rect.top + rect.height / 2);
-      const distance = Math.hypot(dx, dy);
-
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        if (distance < radius + Math.max(rect.width, rect.height) / 2) {
-          node.style.transform = `translate3d(${dx * strength}px, ${dy * strength}px, 0)`;
-        } else {
-          node.style.transform = '';
-        }
-      });
-    };
-
-    const onLeave = () => {
-      cancelAnimationFrame(frame);
-      node.style.transform = '';
-    };
-
-    window.addEventListener('mousemove', onMove, { passive: true });
-    node.addEventListener('mouseleave', onLeave);
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      node.removeEventListener('mouseleave', onLeave);
-      cancelAnimationFrame(frame);
-    };
-  }, [strength, radius]);
-
-  return ref;
-}
-
 /** Inclinaison 3D suivant la position du curseur sur l'élément. */
 export function useTilt(max = 9) {
   const ref = useRef(null);

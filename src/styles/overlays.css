@@ -331,6 +331,16 @@
   border-bottom: 1px solid var(--line);
 }
 
+.modal__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ffffff;
+  padding: var(--sp-16);
+}
+
 .modal__close {
   position: absolute;
   top: var(--sp-16);
@@ -395,6 +405,44 @@
 .modal__list li svg {
   margin-top: 4px;
   color: var(--brand);
+}
+
+.modal__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--sp-16);
+}
+
+.figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.figure img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 6px;
+}
+
+.figure figcaption {
+  padding: var(--sp-8) var(--sp-12);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-3);
+  border-top: 1px solid var(--line);
+}
+
+.modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--line);
 }
 
 .modal__grid {
